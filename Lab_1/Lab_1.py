@@ -3,7 +3,6 @@
 
 from random import randrange
 import codecs
-from Z_5 import *
 from Z_6 import *
 from Z_7 import *
 
@@ -61,7 +60,7 @@ def Z2():
             X2 = (-b - abs(D)) / 2 * a
             print('Решение квадратного уравнения: {0}, {1}'.format(X1, X2))
         else:
-            print('Нет корней')
+            print('Нет действительных корней')
 
         n = int(input('Введите 0 что бы повторить или другое число, для завершения: '))
 
@@ -122,6 +121,9 @@ def Z4():
 def Z5():
     n = 0
     while n == 0:
+        file = open('ROBOT.txt', 'r')
+        commands = file.readline().replace(" ", "").upper()
+
         M = N = x = y = 0;
         command = ""
         valid_commands = ["N", "S", "W", "E", "X"]
@@ -133,9 +135,6 @@ def Z5():
             print('Начальное положение робота не должно быть меньше 1 или быть дальше комнаты')
             x, y = map(int, input("Введите Начальное положение РОБОТА\n").split())
 
-        file = open('ROBOT.txt', 'r')
-        commands = file.readline().replace(" ", "").upper()
-
         while command != "X":
             for command in commands:
                 print(command)
@@ -144,11 +143,11 @@ def Z5():
                     if command == "N":
                         if x + 1 <= M: x += 1
                     if command == "S":
-                        if x - 1 >= 0: x -= 1
+                        if x - 1 >= 1: x -= 1
                     if command == "E":
                         if y + 1 <= M: x + 1
                     if command == "W":
-                        if y - 1 >= 0: y -= 1
+                        if y - 1 >= 1: y -= 1
 
                 else:
                     print("Недопустимая команда ", command)
