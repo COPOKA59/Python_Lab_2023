@@ -1,4 +1,4 @@
-if __name__ == '__main__':
+def robot():
     M = N = x = y = 0;
     command = ""
     valid_commands = ["N", "S", "W", "E", "X"]
