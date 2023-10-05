@@ -121,9 +121,9 @@ def Z4():
 def Z5():
     n = 0
     while n == 0:
-        file = open('ROBOT.txt', 'r')
+        file = open('Lab_1/ROBOT.txt', 'r')
         commands = file.readline().replace(" ", "").upper()
-
+        print('ppp', commands)
         M = N = x = y = 0;
         command = ""
         valid_commands = ["N", "S", "W", "E", "X"]
