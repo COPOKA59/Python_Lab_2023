@@ -8,7 +8,7 @@ from Z16_19 import *
 if __name__ == '__main__':
     run = True
     while run:
-        print('Выберите номер задания от 1 до 15: ')
+        print('Выберите номер задания от 1 до 19: ')
         Z = int(input())
         if Z == 1:
             Z1()
