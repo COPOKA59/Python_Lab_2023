@@ -21,7 +21,8 @@ def print_matrix(A):
 def Z4():
     # 0
     N = 3
-    A = np.array(np.round(np.random.rand (N, N), 2))
+    #A = np.array(np.round(np.random.rand (N, N), 2))
+    A = np.array([[0.54, 0.25, 0.2], [0.3, 0.17, 0.1], [0.08, 0.06, 0.09]])
     print(f'\nA:')
     print_matrix(A)
 
@@ -29,10 +30,10 @@ def Z4():
     summ = A.sum(axis=0)
     for i in range(N):
         print(f'Сумма {i}-столбца: {summ[i]:2.2f}')
-        if summ[i] < 1:
-            print('     Сумма меньше 1')
+        if summ[i] > 1:
+            print('     Сумма больше 1')
             for j in range(N):
-                if A[j, i] < 0.34 and A[j, i].sum(axis=0) < 1: A[j, i] = 0.34
+                if A[j, i] > 0.33 and A[:, i].sum(axis=0) > 1: A[j, i] = 0.33
             summ = A.sum(axis=0)
             print(f'Новая сумма: {summ[i]:2.2f}')
     print(f'\nA:')
@@ -42,7 +43,7 @@ def Z4():
     print(f'\nОпределитель матрицы А: {np.linalg.det(A):2.7f}')
 
     # 3
-    E = np.ones((N, N))
+    E = np.eye(N, N)
     B = np.subtract(E, A)
     print(f'\nB = Е – А:')
     print_matrix(B)
@@ -63,19 +64,15 @@ def Z4():
     # 6
     if np.linalg.det(B) != 0:
         X = np.dot(C, Y)
-        print(f'\nC•Y:')
+        print(f'\nX = C•Y:')
         print_matrix(X)
 
     # 7
     # AX + Y = X
     # AX - X = -Y
-    for i in range(N):
-        A[i, i] -= 1
-    Y_neg = np.array([-y for y in Y])
-    X_1 = np.linalg.solve(A, Y_neg)
-    print(f'\n\nAx + Y = x\nx:')
+    A = np.subtract(A, E)
+    X_1 = np.linalg.solve(A, -Y)
+    print(f'\n\nAx + Y = x\nX:')
     print_matrix(X_1)
-
-
 
 Z4()
